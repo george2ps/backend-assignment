@@ -1,39 +1,73 @@
-# Vessels Tracks API
+<h1>Documentation</h1>
 
-Your task is to create a **RESTful API** that serves vessel tracks from a raw vessel positions data-source.
-The raw data is supplied as a JSON file that you must import to a database schema of your choice.
+Requirements:
 
-Fields supplied are:
-* **mmsi**: unique vessel identifier
-* **status**: AIS vessel status
-* **station**: receiving station ID
-* **speed**: speed in knots x 10 (i.e. 10,1 knots is 101)
-* **lon**: longitude
-* **lat**: latitude
-* **course**: vessel's course over ground
-* **heading**: vessel's true heading
-* **rot**: vessel's rate of turn
-* **timestamp**: position timestamp
+<ul>
+    <li>PHP 7.4 and above</li>
+    <li>Composer</li>
+</ul>
 
-**The API end-point must:**
-* Support the following filters: 
-  * **mmsi** (single or multiple)
-  * **latitude** and **longitude range**
-  * as well as **time interval**.
-* Log incoming requests to a datastore of  your choice (plain text, database, third party service etc.)
-* Limit requests per user to **10/minute**. (Use the request remote IP as a user identifier)
-* Support the following content types:
-  * At least two of the following: application/json, application/vnd.api+json, application/ld+json, application/hal+json
-  * application/xml
-  * text/csv
+<p>
+    This application purpose acts as an API server that serves vessel tracks from a MySQL database.
+    The logs from the requests are kept inside the database as well.
+    There is a rate limiter at 10 requests per minute.
 
-**Share your work:**
-* Fork this repo and create a pull request that contains your implementation in a new branch named after you.
+    Below you will find the steps on how to use the application:
+</p>
 
+<h3>Step 1</h3>
+<p>Run Composer Install inside the project's folder:</p>
+<code>composer  install</code>
 
-**Notes:** 
-* Please include your Tests with your source code
-* Include instructions
-* Feel free to use the framework, libraries of your choice or plain PHP to implement the assignment
+<h3>Step 1</h3>
+<p>Configure your MySQL database credentials inside the <code>.env</code> file like:</p>
+<code>
+    DB_CONNECTION=mysql<br>
+    DB_HOST=127.0.0.1<br>
+    DB_PORT=3306<br>
+    DB_DATABASE=marinetraffic<br>
+    DB_USERNAME=root<br>
+    DB_PASSWORD=<br>
+</code>
 
-**Have fun!**
+<h3>Step 2</h3>
+<p>Run the command below inside your project's folder to migrate the tables to the database:</p>
+<code>php artisan migrate</code>
+
+<h3>Step 3</h3>
+<p>Run the command below inside your project's folder to start the local server:</p>
+<code>php artisan serve</code>
+
+<h3>Step 4</h3>
+<p>Run the command below inside your project's folder:</p>
+<code>php artisan sync:ship_positions</code>
+
+<h3>Step 5</h3>
+<p>Open Postman or any other application to make requests.</p>
+<p>Paste in the below url and using the <code>GET</code> method make a request:</p>
+<code>http://127.0.0.1:8000/api/get/ship/positions</code>
+
+<h3>Step 6</h3>
+<p>Filters</p>
+<ul>
+    <li>
+        Offset and Limit of the query (must be used together)
+        <h5>Example:</h5>
+        <code>http://127.0.0.1:8000/api/get/ship/positions?offset=100&limit=100</code>
+    </li>
+    <li style="margin-top: 30px;">
+        MMSI (You can filter by multiple MMSIs by adding a coma between the values).
+        <h5>Example:</h5>
+        <code>http://127.0.0.1:8000/api/get/ship/positions?mmsi=247039300,311040700</code>
+    </li>
+    <li style="margin-top: 30px;">
+        Coordinates range
+        <h5>Example:</h5>
+        <code>http://127.0.0.1:8000/api/get/ship/positions?latStart=42.03212&latEnd=43.03212&lonStart=15.21578&lonEnd=16.21578</code>
+    </li>
+    <li style="margin-top: 30px;">
+        Time interval (Add the starting timestamp and ending timestamp seperated by a coma)
+        <h5>Example:</h5>
+        <code>http://127.0.0.1:8000/api/get/ship/positions?timestamp=1372683960,1372700340</code>
+    </li>
+</ul>
