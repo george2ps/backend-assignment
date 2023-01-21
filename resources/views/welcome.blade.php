@@ -37,14 +37,34 @@
 
                     <p>
                         This application purpose acts as an API server that serves vessel tracks from a MySQL database.
-                        The logs from the requests are kept inside the database as well.
+                        The logs from the requests are kept inside the database as well (table name: dev_logs).
                         There is a rate limiter at 10 requests per minute.
 
                         Below you will find the steps on how to use the application:
                     </p>
 
                     <h3>Step 1</h3>
-                    <p>Configure your MySQL database credentials inside the <code>.env</code> file like:</p>
+                    <p>Run Composer Install inside the project's folder:</p>
+                    <code>composer install</code>
+
+
+                    <h3>Step 2</h3>
+                    <p>
+                        Copy the <code>.env.example</code> file inside the root folder and rename it <code>.env</code>
+                    </p>
+
+                    <h3>Step 3</h3>
+                    <p>
+                        Generate app key using the command below inside the project's folder:
+                        <code>php artisan key:generate</code>
+                    </p>
+
+
+                    <h3>Step 4</h3>
+                    <p>
+                        Configure your MySQL database credentials inside the <code>.env</code> file:
+                        <h5>Example:</h5>
+                    </p>
                     <code>
                         DB_CONNECTION=mysql<br>
                         DB_HOST=127.0.0.1<br>
@@ -54,24 +74,24 @@
                         DB_PASSWORD=<br>
                     </code>
 
-                    <h3>Step 2</h3>
+                    <h3>Step 5</h3>
                     <p>Run the command below inside your project's folder to migrate the tables to the database:</p>
                     <code>php artisan migrate</code>
 
-                    <h3>Step 3</h3>
+                    <h3>Step 6</h3>
                     <p>Run the command below inside your project's folder to start the local server:</p>
                     <code>php artisan serve</code>
 
-                    <h3>Step 4</h3>
+                    <h3>Step 7</h3>
                     <p>Run the command below inside your project's folder:</p>
                     <code>php artisan sync:ship_positions</code>
 
-                    <h3>Step 5</h3>
+                    <h3>Step 8</h3>
                     <p>Open Postman or any other application to make requests.</p>
                     <p>Paste in the below url and using the <code>GET</code> method make a request:</p>
                     <code>http://127.0.0.1:8000/api/get/ship/positions</code>
 
-                    <h3>Step 6</h3>
+                    <h3>Step 9</h3>
                     <p>Filters</p>
                     <ul>
                         <li>
