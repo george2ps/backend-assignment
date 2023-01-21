@@ -89,7 +89,8 @@
                     <h3>Step 8</h3>
                     <p>Open Postman or any other application to make requests.</p>
                     <p>Paste in the below url and using the <code>GET</code> method make a request:</p>
-                    <code>http://127.0.0.1:8000/api/get/ship/positions</code>
+                    <code>http://127.0.0.1:8000/api/get/ship/positions</code><br>
+                    <img width="800" src="{{ asset('assets/images/test1.png') }}" alt="">
 
                     <h3>Step 9</h3>
                     <p>Filters</p>
@@ -97,22 +98,26 @@
                         <li>
                             Offset and Limit of the query (must be used together)
                             <h5>Example:</h5>
-                            <code>http://127.0.0.1:8000/api/get/ship/positions?offset=100&limit=100</code>
+                            <code>http://127.0.0.1:8000/api/get/ship/positions?offset=100&limit=100</code><br>
+                            <img width="800" src="{{ asset('assets/images/test2.png') }}" alt="">
                         </li>
                         <li style="margin-top: 30px;">
                             MMSI (You can filter by multiple MMSIs by adding a coma between the values).
                             <h5>Example:</h5>
-                            <code>http://127.0.0.1:8000/api/get/ship/positions?mmsi=247039300,311040700</code>
+                            <code>http://127.0.0.1:8000/api/get/ship/positions?mmsi=247039300,311040700</code><br>
+                            <img width="800" src="{{ asset('assets/images/test3.png') }}" alt="">
                         </li>
                         <li style="margin-top: 30px;">
                             Coordinates range
                             <h5>Example:</h5>
-                            <code>http://127.0.0.1:8000/api/get/ship/positions?latStart=42.03212&latEnd=43.03212&lonStart=15.21578&lonEnd=16.21578</code>
+                            <code>http://127.0.0.1:8000/api/get/ship/positions?latStart=42.03212&latEnd=43.03212&lonStart=15.21578&lonEnd=16.21578</code><br>
+                            <img width="800" src="{{ asset('assets/images/test4.png') }}" alt="">
                         </li>
                         <li style="margin-top: 30px;">
                             Time interval (Add the starting timestamp and ending timestamp seperated by a coma)
                             <h5>Example:</h5>
-                            <code>http://127.0.0.1:8000/api/get/ship/positions?timestamp=1372683960,1372700340</code>
+                            <code>http://127.0.0.1:8000/api/get/ship/positions?timestamp=1372683960,1372700340</code><br>
+                            <img width="800" src="{{ asset('assets/images/test5.png') }}" alt="">
                         </li>
                     </ul>
                 </div>

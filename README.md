@@ -50,6 +50,8 @@ Below you will find the steps on how to use the application:
 <p>Run the command below inside your project's folder to migrate the tables to the database:</p>
 <code>php artisan migrate</code>
 
+<p>Go to your localhost url (default is <code>http://127.0.0.1:8000</code> to continue viewing this documentation including the testing screenshots.</p>
+
 <h3>Step 6</h3>
 <p>Run the command below inside your project's folder to start the local server:</p>
 <code>php artisan serve</code>
