@@ -87,12 +87,16 @@
                     <code>php artisan sync:ship_positions</code>
 
                     <h3>Step 8</h3>
+                    <p>Run the command below inside your project's folder to test the application:</p>
+                    <code>php artisan test</code>
+
+                    <h3>Step 9</h3>
                     <p>Open Postman or any other application to make requests.</p>
                     <p>Paste in the below url and using the <code>GET</code> method make a request:</p>
                     <code>http://127.0.0.1:8000/api/get/ship/positions</code><br>
                     <img width="800" src="{{ asset('assets/images/test1.png') }}" alt="">
 
-                    <h3>Step 9</h3>
+                    <h3>Step 10</h3>
                     <p>Filters</p>
                     <ul>
                         <li>
